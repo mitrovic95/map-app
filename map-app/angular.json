@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -122,6 +125,46 @@
             "production": {
               "devServerTarget": "map-app:serve:production"
             }
+          }
+        }
+      }
+    },
+    "map": {
+      "projectType": "library",
+      "root": "projects/map",
+      "sourceRoot": "projects/map/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/map/tsconfig.lib.json",
+            "project": "projects/map/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/map/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/map/src/test.ts",
+            "tsConfig": "projects/map/tsconfig.spec.json",
+            "karmaConfig": "projects/map/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/map/tsconfig.lib.json",
+              "projects/map/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

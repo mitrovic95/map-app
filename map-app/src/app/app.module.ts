@@ -1,3 +1,4 @@
+import { MapboxModule } from './../../projects/map/src/lib/components/mapbox/mapbox.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MapboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
